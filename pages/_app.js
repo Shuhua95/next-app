@@ -1,23 +1,11 @@
 import React from 'react'
 import App, {Container} from 'next/app'
 import Head from 'next/head'
-import { Menu, Icon } from 'antd'
-const SubMenu = Menu.SubMenu
-const MenuItemGroup = Menu.ItemGroup
-import Header from '../components/Header'
+import AppHeader from '../components/Header'
+import { Layout, Menu, Breadcrumb } from 'antd'
+const { Header, Content, Footer } = Layout
 
 export default class NextApp extends App {
-  state = {
-    current: 'mail'
-  }
-
-  handleClick = (e) => {
-    console.log('click ', e);
-    this.setState({
-      current: e.key,
-    });
-  }
-
   render() {
     const {Component, pageProps} = this.props
     
@@ -28,6 +16,23 @@ export default class NextApp extends App {
         <link rel='stylesheet' href='/_next/static/style.css' />
       </Head>
       <style jsx global>{`
+        /* fix jumping scrollbar */
+        html {
+          overflow-y: scroll;
+        }
+        :root {
+          overflow-y: auto;
+          overflow-x: hidden;
+        }
+        :root body {
+          position: absolute;
+        }
+        body {
+          width: 100vw;
+          height: auto;
+          overflow: hidden;
+        }
+
         html {
           box-sizing: border-box;
           -webkit-overflow-scrolling: touch;
@@ -67,38 +72,28 @@ export default class NextApp extends App {
         img {
           border: none;
         }
-        .container {
+
+        .ant-layout {
+          min-height: 100vh
+        }
+        .ant-layout-content {
+          flex: 1;
           margin: 0 auto;
           max-width: 1200px;
+          width: 100%;
         }
       `}</style>
-      <Menu
-        onClick={this.handleClick}
-        selectedKeys={[this.state.current]}
-        mode="horizontal"
-      >
-        <Menu.Item key="mail">
-          <Icon type="mail" />Navigation One
-          </Menu.Item>
-        <Menu.Item key="app" disabled>
-          <Icon type="appstore" />Navigation Two
-          </Menu.Item>
-        <SubMenu title={<span><Icon type="setting" />Navigation Three - Submenu</span>}>
-          <MenuItemGroup title="Item 1">
-            <Menu.Item key="setting:1">Option 1</Menu.Item>
-            <Menu.Item key="setting:2">Option 2</Menu.Item>
-          </MenuItemGroup>
-          <MenuItemGroup title="Item 2">
-            <Menu.Item key="setting:3">Option 3</Menu.Item>
-            <Menu.Item key="setting:4">Option 4</Menu.Item>
-          </MenuItemGroup>
-        </SubMenu>
-        <Menu.Item key="alipay">
-          <a href="https://ant.design" target="_blank" rel="noopener noreferrer">Navigation Four - Link</a>
-        </Menu.Item>
-      </Menu>
-      <Header />
-      <Component {...pageProps} />
+      <Layout>
+        <Header style={{ background: '#fff' }}>
+          <AppHeader />
+        </Header>
+        <Content>
+          <Component {...pageProps} />
+        </Content>
+        <Footer style={{textAlign: 'center'}}>
+          ban12.com &copy;2018 Created by fangniu[AT]live.com base on <a href="https://reactjs.org/" target="_blank">React</a> &amp; <a href="https://nextjs.org/" target="_blank">next.js</a> &amp; <a href="https://ant.design/" target="_blank">antd</a>
+        </Footer>
+      </Layout>
     </Container>
   }
 }
