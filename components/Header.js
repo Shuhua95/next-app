@@ -10,7 +10,6 @@ export default class Header extends React.Component {
   }
 
   handleClick = (e) => {
-    console.log('click ', e);
     this.setState({
       current: e.key,
     });
@@ -28,13 +27,14 @@ export default class Header extends React.Component {
       mode="horizontal"
       style={{lineHeight: '64px'}}
     >
-      {links.map((item, index) =>
-        <Menu.Item key={item.title}>
-          <Link key={index} href={item.href}>
-            <a>{item.title}</a>
-          </Link>
-        </Menu.Item>
-      )
+      {
+        links.map((item, index) =>
+          <Menu.Item key={item.title}>
+            <Link key={index} href={item.href}>
+              <a>{item.title}</a>
+            </Link>
+          </Menu.Item>
+        )
       }
       <SubMenu title={<span><Icon type="setting" />Navigation Three - Submenu</span>}>
         <MenuItemGroup title="Item 1">

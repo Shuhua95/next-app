@@ -1,6 +1,9 @@
 {
   "presets": [
     ["next/babel", {
+      "styled-jsx": {
+        "optimizeForSpeed": true
+      },
       "preset-env": {
         "useBuiltIns": "usage"
       }

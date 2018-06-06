@@ -1,11 +1,32 @@
 import React from 'react'
 import App, {Container} from 'next/app'
 import Head from 'next/head'
+import NProgress from 'nprogress'
+import Router from 'next/router'
+
+NProgress.configure({
+  showSpinner: false
+});
+
+Router.onRouteChangeStart = () => NProgress.start()
+Router.onRouteChangeComplete = () => NProgress.done()
+Router.onRouteChangeError = () => NProgress.done()
+
 import AppHeader from '../components/Header'
 import { Layout, Menu, Breadcrumb } from 'antd'
 const { Header, Content, Footer } = Layout
 
 export default class NextApp extends App {
+  static async getInitialProps ({ Component, router, ctx }) {
+    let pageProps = {}
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx)
+    }
+
+    return {pageProps}
+  }
+
   render() {
     const {Component, pageProps} = this.props
     
@@ -13,6 +34,7 @@ export default class NextApp extends App {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover" />
         <title>Next.js</title>
+        <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
         <link rel='stylesheet' href='/_next/static/style.css' />
       </Head>
       <style jsx global>{`

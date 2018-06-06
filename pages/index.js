@@ -1,6 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
+import moment from 'moment'
+import 'moment/locale/zh-cn'
+moment.locale('zh-cn')
 import { List } from 'antd'
 
 export default class Index extends React.Component {
