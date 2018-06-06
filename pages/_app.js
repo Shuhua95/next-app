@@ -11,8 +11,8 @@ export default class NextApp extends App {
     
     return <Container>
       <Head>
-        <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover" />
+        <title>Next.js</title>
         <link rel='stylesheet' href='/_next/static/style.css' />
       </Head>
       <style jsx global>{`
