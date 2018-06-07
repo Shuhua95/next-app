@@ -1,8 +1,23 @@
 import React from 'react'
 import Link from 'next/link'
-import { Menu, Icon } from 'antd'
-const SubMenu = Menu.SubMenu
-const MenuItemGroup = Menu.ItemGroup
+import Router from 'next/router'
+import NProgress from 'nprogress'
+
+NProgress.configure({
+  showSpinner: false
+});
+
+Router.onRouteChangeStart = () => NProgress.start()
+Router.onRouteChangeComplete = () => NProgress.done()
+Router.onRouteChangeError = () => NProgress.done()
+
+import { Menu } from 'antd'
+
+const links = [
+  { title: 'Home', href: '/' },
+  { title: 'React learning', href: '/react' },
+  { title: 'About', href: '/about' }
+]
 
 export default class Header extends React.Component {
   state = {
@@ -16,11 +31,6 @@ export default class Header extends React.Component {
   }
 
   render() {
-    const links = [
-      { title: 'Home', href: '/' },
-      { title: 'About', href: '/about' }
-    ]
-
     return <Menu
       onClick={this.handleClick}
       selectedKeys={[this.state.current]}
@@ -36,16 +46,6 @@ export default class Header extends React.Component {
           </Menu.Item>
         )
       }
-      <SubMenu title={<span><Icon type="setting" />Navigation Three - Submenu</span>}>
-        <MenuItemGroup title="Item 1">
-          <Menu.Item key="setting:1">Option 1</Menu.Item>
-          <Menu.Item key="setting:2">Option 2</Menu.Item>
-        </MenuItemGroup>
-        <MenuItemGroup title="Item 2">
-          <Menu.Item key="setting:3">Option 3</Menu.Item>
-          <Menu.Item key="setting:4">Option 4</Menu.Item>
-        </MenuItemGroup>
-      </SubMenu>
     </Menu>
   }
 }

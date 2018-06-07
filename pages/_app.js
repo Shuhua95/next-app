@@ -1,20 +1,6 @@
 import React from 'react'
 import App, {Container} from 'next/app'
-import Head from 'next/head'
-import NProgress from 'nprogress'
-import Router from 'next/router'
-
-NProgress.configure({
-  showSpinner: false
-});
-
-Router.onRouteChangeStart = () => NProgress.start()
-Router.onRouteChangeComplete = () => NProgress.done()
-Router.onRouteChangeError = () => NProgress.done()
-
-import AppHeader from '../components/Header'
-import { Layout, Menu, Breadcrumb } from 'antd'
-const { Header, Content, Footer } = Layout
+import Layout from '../components/layout'
 
 export default class NextApp extends App {
   static async getInitialProps ({ Component, router, ctx }) {
@@ -31,90 +17,8 @@ export default class NextApp extends App {
     const {Component, pageProps} = this.props
     
     return <Container>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover" />
-        <title>Next.js</title>
-        <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
-        <link rel='stylesheet' href='/_next/static/style.css' />
-      </Head>
-      <style jsx global>{`
-        /* fix jumping scrollbar */
-        html {
-          overflow-y: scroll;
-        }
-        :root {
-          overflow-y: auto;
-          overflow-x: hidden;
-        }
-        :root body {
-          position: absolute;
-        }
-        body {
-          width: 100vw;
-          height: auto;
-          overflow: hidden;
-        }
-
-        html {
-          box-sizing: border-box;
-          -webkit-overflow-scrolling: touch;
-        }
-        *,
-        ::after,
-        ::before {
-          box-sizing: inherit;
-        }
-        body {
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei",
-            Roboto, "Helvetica Neue";
-        }
-        iframe,
-        img,
-        object,
-        video {
-          max-width: 100%;
-        }
-        button {
-          cursor: pointer;
-          outline: none;
-          background-color: transparent;
-          border: none;
-        }
-        ul {
-          margin: 0;
-          padding: 0;
-          list-style: none;
-        }
-        a {
-          text-decoration: none;
-          color: inherit;
-          transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-          outline: none;
-        }
-        img {
-          border: none;
-        }
-
-        .ant-layout {
-          min-height: 100vh
-        }
-        .ant-layout-content {
-          flex: 1;
-          margin: 0 auto;
-          max-width: 1200px;
-          width: 100%;
-        }
-      `}</style>
       <Layout>
-        <Header style={{ background: '#fff' }}>
-          <AppHeader />
-        </Header>
-        <Content>
-          <Component {...pageProps} />
-        </Content>
-        <Footer style={{textAlign: 'center'}}>
-          ban12.com &copy;2018 Created by fangniu[AT]live.com base on <a href="https://reactjs.org/" target="_blank">React</a> &amp; <a href="https://nextjs.org/" target="_blank">next.js</a> &amp; <a href="https://ant.design/" target="_blank">antd</a>
-        </Footer>
+        <Component {...pageProps} />
       </Layout>
     </Container>
   }

@@ -19,7 +19,7 @@
     "express": "^4.16.3",
     "isomorphic-unfetch": "^2.0.0",
     "moment": "^2.22.2",
-    "next": "^6.0.3",
+    "next": "latest",
     "nprogress": "^0.2.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
