@@ -17,13 +17,16 @@
     "core-js": "^2.5.7",
     "cross-env": "^5.1.6",
     "express": "^4.16.3",
+    "immutable": "^3.8.2",
     "isomorphic-unfetch": "^2.0.0",
     "moment": "^2.22.2",
     "next": "latest",
     "nprogress": "^0.2.0",
+    "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-markdown": "^3.3.2",
+    "react-virtualized": "^9.19.1",
     "webpack-bundle-analyzer": "^2.13.1"
   },
   "devDependencies": {

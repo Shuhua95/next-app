@@ -16,6 +16,7 @@ import { Menu } from 'antd'
 const links = [
   { title: 'Home', href: '/' },
   { title: 'React learning', href: '/react' },
+  { title: 'virtualized', href: '/virtualized' },
   { title: 'About', href: '/about' }
 ]
 
