@@ -4,6 +4,7 @@ import Router from 'next/router'
 import NProgress from 'nprogress'
 
 NProgress.configure({
+  trickleSpeed: 60,
   showSpinner: false
 });
 

@@ -7,7 +7,7 @@ if (typeof require !== 'undefined') {
 }
 
 module.exports = withCss({
-  webpack: function (config, { isServer, dev }) {
+  webpack: function (config, { isServer }) {
     if (ANALYZE) {
       config.plugins.push(new BundleAnalyzerPlugin({
         analyzerMode: 'server',
@@ -16,16 +16,15 @@ module.exports = withCss({
       }))
     }
 
-    if (!dev) {
-      // Unshift polyfills in main entrypoint.
-      const originalEntry = config.entry;
-      config.entry = async () => {
-        const entries = await originalEntry();
-        if (entries['main.js']) {
-          entries['main.js'].unshift('./polyfills.js');
-        }
-        return entries;
+    const originalEntry = config.entry
+    config.entry = async () => {
+      const entries = await originalEntry()
+
+      if (entries['main.js']) {
+        entries['main.js'].unshift('./client/polyfills.js')
       }
+
+      return entries
     }
 
     return config
