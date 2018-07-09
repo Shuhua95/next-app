@@ -5,6 +5,11 @@ import moment from 'moment'
 import 'moment/locale/zh-cn'
 moment.locale('zh-cn')
 import { List } from 'antd'
+import styled from 'styled-components'
+
+const Wrapper = styled.section`
+  margin-top: 50px;
+`
 
 export default class Index extends React.Component {
   static async getInitialProps() {
@@ -19,7 +24,7 @@ export default class Index extends React.Component {
   }
 
   render() {
-    return <section className="container">
+    return <Wrapper>
       <List
         bordered
         dataSource={this.props.shows}
@@ -32,11 +37,6 @@ export default class Index extends React.Component {
         )}
       >
       </List>
-      <style jsx>{`
-        .container {
-          margin-top: 50px;
-        }
-      `}</style>
-    </section>
+    </Wrapper>
   }
 }

@@ -1,4 +1,28 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const Filterable = styled.div`
+  max-width: 500px;
+`
+
+const Row = styled.p`
+  display: flex;
+
+  span {
+    flex: 1 0 auto;
+  }
+`
+const CategoryRow = styled.h3`
+  text-align: center;
+`
+
+const Title = styled.h2`
+  display: flex
+          
+  span {
+    flex: 1 0 auto;
+  }
+`
 
 const PRODUCTS = [
   {category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football"},
@@ -34,7 +58,7 @@ export default class FilterableProductTable extends React.Component {
   render() {
     const { filterText, inStockOnly } = this.state
     return (
-      <div className="filterable-product-table">
+      <Filterable>
         <SearchBar
           filterText={filterText}
           inStockOnly={inStockOnly}
@@ -44,12 +68,7 @@ export default class FilterableProductTable extends React.Component {
           products={PRODUCTS}
           filterText={filterText}
           inStockOnly={inStockOnly} />
-        <style jsx>{`
-          .filterable-product-table {
-            max-width: 500px;
-          }
-        `}</style>
-      </div>
+      </Filterable>
     )
   }
 }
@@ -102,16 +121,8 @@ class ProductTable extends React.Component {
 
     return (
       <div className="product-table">
-        <h2><span>name</span>price</h2>
+        <Title><span>name</span>price</Title>
         {rows}
-        <style jsx>{`
-          h2 {
-            display: flex
-          }
-          h2 span {
-            flex: 1 0 auto;
-          }
-        `}</style>
       </div>
     )
   }
@@ -119,30 +130,17 @@ class ProductTable extends React.Component {
 
 function ProductCategoryRow(props) {
   return (
-    <h3>
+    <CategoryRow>
       {props.category}
-      <style jsx>{`
-        h3 {
-          text-align: center
-        }
-      `}</style>
-    </h3>
+    </CategoryRow>
   )
 }
 
 function ProductRow(props) {
   return (
-    <p>
+    <Row>
       <span style={props.stocked ? null : {color: 'red'}}>{props.name}</span>
       {props.price}
-      <style jsx>{`
-        p {
-          display: flex
-        }
-        p span {
-          flex: 1 0 auto;
-        }
-      `}</style>
-    </p>
+    </Row>
   )
 }
