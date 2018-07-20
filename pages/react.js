@@ -9,9 +9,12 @@ export default class extends React.Component {
 
     this.state = {
       isGoing: true,
+      radio: false,
       numberOfGuests: 2,
       temperature: '',
-      scale: 'c'
+      scale: 'c',
+      textarea: '',
+      select: 'coconut'
     }
   }
 
@@ -33,15 +36,20 @@ export default class extends React.Component {
     this.setState({scale: 'f', temperature});
   }
 
+  handleSubmit = e => {
+    e.preventDefault()
+    console.log(this.input.value)
+  }
+
   render() {
-    const { scale, temperature } = this.state
+    const { scale, temperature, textarea, select } = this.state
     const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature
     const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature
 
     return <>
       <TodoList />
 
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <label>
           Is going:
           <input
@@ -51,6 +59,7 @@ export default class extends React.Component {
             onChange={this.handleInputChange} />
         </label>
         <br />
+
         <label>
           Number of guests:
           <input
@@ -59,6 +68,25 @@ export default class extends React.Component {
             value={this.state.numberOfGuests}
             onChange={this.handleInputChange} />
         </label>
+        <br />
+
+        <label>
+          Name:
+          <textarea placeholder="Please write an essay about your favorite DOM element." name="textarea" value={textarea} onChange={this.handleInputChange}></textarea>
+        </label>
+        <br />
+
+        <select value={select} name="select" onChange={this.handleInputChange}>
+          <option value="grapefruit">Grapefruit</option>
+          <option value="lime">Lime</option>
+          <option value="coconut">Coconut</option>
+          <option value="mango">Mango</option>
+        </select>
+        <br />
+
+        <input type="file" ref={(input) => this.input = input}/>
+
+        <button>Submit</button>
       </form>
 
       <TemperatureInput 

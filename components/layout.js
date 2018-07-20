@@ -77,7 +77,6 @@ export default ({ children, title = 'ban12.com' }) => (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover" />
       <title>{ `${title} | Next.js` }</title>
-      <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
       <link rel='stylesheet' href='/_next/static/style.css' />
     </Head>
     <Header style={{ background: '#fff' }}>

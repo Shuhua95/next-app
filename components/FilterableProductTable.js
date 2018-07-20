@@ -12,6 +12,7 @@ const Row = styled.p`
     flex: 1 0 auto;
   }
 `
+
 const CategoryRow = styled.h3`
   text-align: center;
 `
