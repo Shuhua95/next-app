@@ -2,6 +2,7 @@ import React from 'react'
 import TodoList from '../components/TodoList'
 import TemperatureInput from '../components/TemperatureInput'
 import FilterableProductTable from '../components/FilterableProductTable'
+import SmoothRolling from '../static/smoothRolling'
 
 export default class extends React.Component {
   constructor(props) {
@@ -16,6 +17,11 @@ export default class extends React.Component {
       textarea: '',
       select: 'coconut'
     }
+  }
+
+  componentDidMount() {
+    const smoothRolling = new SmoothRolling()
+    smoothRolling.init()
   }
 
   handleInputChange = e => {
