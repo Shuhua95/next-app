@@ -1,5 +1,5 @@
 import React from 'react'
-import fetch from 'isomorphic-unfetch'
+import 'isomorphic-unfetch'
 import Markdown from 'react-markdown'
 import { Card } from 'antd'
 const { Meta } = Card
@@ -30,9 +30,10 @@ export default class Post extends React.Component {
     const res = await fetch(`https://api.tvmaze.com/shows/${query.id}`)
     const show = await res.json()
 
-    console.log(`Fetched show: ${show.name}`)
-
-    return { show }
+    return {
+      title: show.name,
+      show
+    }
   }
 
   render() {

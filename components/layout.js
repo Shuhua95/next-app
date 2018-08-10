@@ -72,20 +72,20 @@ injectGlobal`
   }
 `
 
-export default ({ children, title = 'ban12.com' }) => (
+export default ({ children, title = 'Default Title' }) => (
   <Layout>
     <Head>
-      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover" />
-      <title>{ `${title} | Next.js` }</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+      <title>{`${title} | Next.js`}</title>
       <link rel='stylesheet' href='/_next/static/style.css' />
     </Head>
     <Header style={{ background: '#fff' }}>
       <AppHeader />
     </Header>
     <Content>
-      { children }
+      {children}
     </Content>
-    <Footer style={{textAlign: 'center'}}>
+    <Footer style={{ textAlign: 'center' }}>
       ban12.com &copy;2018 Created by fangniu[AT]live.com base on <a href="https://reactjs.org/" target="_blank">React</a> &amp; <a href="https://nextjs.org/" target="_blank">next.js</a> &amp; <a href="https://ant.design/" target="_blank">antd</a>
     </Footer>
   </Layout>

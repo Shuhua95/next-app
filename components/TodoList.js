@@ -74,7 +74,7 @@ class TodoList extends React.Component {
   handleClick = (index) => {
     this.props.del(index)
   }
-  
+
   render() {
     const { items } = this.props
     return <Ul>

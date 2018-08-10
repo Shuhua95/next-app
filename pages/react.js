@@ -35,11 +35,11 @@ export default class extends React.Component {
   }
 
   handleCelsiusChange = temperature => {
-    this.setState({scale: 'c', temperature});
+    this.setState({ scale: 'c', temperature });
   }
 
   handleFahrenheitChange = temperature => {
-    this.setState({scale: 'f', temperature});
+    this.setState({ scale: 'f', temperature });
   }
 
   handleSubmit = e => {
@@ -90,18 +90,18 @@ export default class extends React.Component {
         </select>
         <br />
 
-        <input type="file" ref={(input) => this.input = input}/>
+        <input type="file" ref={(input) => this.input = input} />
 
         <button>Submit</button>
       </form>
 
-      <TemperatureInput 
+      <TemperatureInput
         scale='c'
         temperature={celsius}
         onTemperatureChange={this.handleCelsiusChange}
       />
 
-      <TemperatureInput 
+      <TemperatureInput
         scale='f'
         temperature={fahrenheit}
         onTemperatureChange={this.handleFahrenheitChange}

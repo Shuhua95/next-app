@@ -32,11 +32,11 @@ export default class Header extends React.Component {
   render() {
     return <>
       <Head>
-        <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />        
+        <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
       </Head>
       <Menu
         mode="horizontal"
-        style={{lineHeight: '64px'}}>
+        style={{ lineHeight: '64px' }}>
         {
           links.map((item, index) =>
             <Menu.Item key={item.title}>

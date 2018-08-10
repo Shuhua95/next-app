@@ -1,5 +1,5 @@
 import React from 'react'
-import fetch from 'isomorphic-unfetch'
+import 'isomorphic-unfetch'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 moment.locale('zh-cn')
@@ -10,7 +10,7 @@ const { Meta } = Card
 
 export default class extends React.Component {
   static async getInitialProps() {
-    const res = await fetch(`http://gank.io/api/data/all/20/1`)
+    const res = await fetch(`https://gank.io/api/data/all/20/1`)
     const data = await res.json()
 
     return { data: data.results.filter(({ type }) => type != '休息视频') }
@@ -29,10 +29,10 @@ export default class extends React.Component {
     this.columnYMap = []
 
     this.cellRenderer = ({ index, key, style }) => {
-      const {createdAt: time, desc, images = [], type, url, who} = this.state.list[index]
+      const { createdAt: time, desc, images = [], type, url, who } = this.state.list[index]
       const src = images[0] ? images[0]
         : /\.(jpg|gif|jpeg)+$/.test(url) ? url
-        : ''
+          : ''
 
       return <Card
         title={`${who} - ${moment(time).format('YYYY-MM-DD')}`}
@@ -50,8 +50,8 @@ export default class extends React.Component {
     }
 
     this.cellSizeAndPositionGetter = ({ index }) => {
-      const {list, columnCount} = this.state
-      
+      const { list, columnCount } = this.state
+
       const columnPosition = index % (columnCount || 1)
 
       // Poor man's Masonry layout; columns won't all line up equally with the bottom.
@@ -80,7 +80,7 @@ export default class extends React.Component {
     const { list } = this.state
 
     return <AutoSizer>
-      {({ height, width }) => 
+      {({ height, width }) =>
         <Collection
           cellCount={list.length}
           cellRenderer={this.cellRenderer}

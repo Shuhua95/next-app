@@ -26,12 +26,12 @@ const Title = styled.h2`
 `
 
 const PRODUCTS = [
-  {category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football"},
-  {category: "Sporting Goods", price: "$9.99", stocked: true, name: "Baseball"},
-  {category: "Sporting Goods", price: "$29.99", stocked: false, name: "Basketball"},
-  {category: "Electronics", price: "$99.99", stocked: true, name: "iPod Touch"},
-  {category: "Electronics", price: "$399.99", stocked: false, name: "iPhone 5"},
-  {category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7"}
+  { category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football" },
+  { category: "Sporting Goods", price: "$9.99", stocked: true, name: "Baseball" },
+  { category: "Sporting Goods", price: "$29.99", stocked: false, name: "Basketball" },
+  { category: "Electronics", price: "$99.99", stocked: true, name: "iPod Touch" },
+  { category: "Electronics", price: "$399.99", stocked: false, name: "iPhone 5" },
+  { category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7" }
 ]
 
 export default class FilterableProductTable extends React.Component {
@@ -90,8 +90,8 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div className="search-bar">
-        <input id="filterText" type="text" value={this.props.filterText} onChange={this.handleFilterTextChange}/><br />
-        <input id="inStockOnly" type="checkbox" checked={this.props.inStockOnly} onChange={this.handleInStockChange}/>
+        <input id="filterText" type="text" value={this.props.filterText} onChange={this.handleFilterTextChange} /><br />
+        <input id="inStockOnly" type="checkbox" checked={this.props.inStockOnly} onChange={this.handleInStockChange} />
         <label htmlFor="inStockOnly">Only show product in stock</label>
       </div>
     )
@@ -104,12 +104,12 @@ class ProductTable extends React.Component {
   }
 
   render() {
-    const {products, filterText, inStockOnly} = this.props
+    const { products, filterText, inStockOnly } = this.props
 
     const rows = []
     let lastCategory = null
 
-    products.forEach(({category, price, stocked, name}) => {
+    products.forEach(({ category, price, stocked, name }) => {
       if (name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) return
       if (inStockOnly && !stocked) return
 
@@ -140,7 +140,7 @@ function ProductCategoryRow(props) {
 function ProductRow(props) {
   return (
     <Row>
-      <span style={props.stocked ? null : {color: 'red'}}>{props.name}</span>
+      <span style={props.stocked ? null : { color: 'red' }}>{props.name}</span>
       {props.price}
     </Row>
   )

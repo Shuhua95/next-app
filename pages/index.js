@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import fetch from 'isomorphic-unfetch'
+import 'isomorphic-unfetch'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 moment.locale('zh-cn')
@@ -16,9 +16,8 @@ export default class Index extends React.Component {
     const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
     const data = await res.json()
 
-    console.log(`Show data fetched. Count: ${data.length}`)
-
     return {
+      title: 'Home',
       shows: data
     }
   }

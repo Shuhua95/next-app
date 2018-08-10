@@ -11,12 +11,10 @@ module.exports = withCss({
   webpack: function (config, { isServer }) {
     if (ANALYZE) {
       config.plugins.push(new BundleAnalyzerPlugin({
-        analyzerMode: 'server',
-        analyzerPort: isServer ? 8888 : 8889,
-        openAnalyzer: true
+        analyzerPort: isServer ? 8888 : 8889
       }))
     }
-
+    
     const originalEntry = config.entry
     config.entry = async () => {
       const entries = await originalEntry()
