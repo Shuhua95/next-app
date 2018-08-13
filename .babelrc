@@ -1,10 +1,13 @@
 {
   "presets": [
-    ["next/babel", {
-      "preset-env": {
-        "useBuiltIns": "usage"
+    [
+      "next/babel",
+      {
+        "preset-env": {
+          "useBuiltIns": "usage"
+        }
       }
-    }]
+    ]
   ],
   "plugins": [
     "transform-decorators-legacy",
@@ -16,11 +19,11 @@
       }
     ],
     [
-      "styled-components", 
+      "styled-components",
       {
-        "ssr": true, 
-        "displayName": true, 
-        "preprocess": false 
+        "ssr": true,
+        "displayName": true,
+        "preprocess": false
       }
     ]
   ]

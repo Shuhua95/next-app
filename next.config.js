@@ -1,4 +1,5 @@
 const withCss = require('@zeit/next-css')
+const { IgnorePlugin } = require('webpack')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const { ANALYZE } = process.env
 
@@ -9,12 +10,7 @@ if (typeof require !== 'undefined') {
 
 module.exports = withCss({
   webpack: function (config, { isServer }) {
-    if (ANALYZE) {
-      config.plugins.push(new BundleAnalyzerPlugin({
-        analyzerPort: isServer ? 8888 : 8889
-      }))
-    }
-    
+
     const originalEntry = config.entry
     config.entry = async () => {
       const entries = await originalEntry()
@@ -24,6 +20,14 @@ module.exports = withCss({
       }
 
       return entries
+    }
+
+    config.plugins.push(new IgnorePlugin(/^\.\/locale$/, /moment$/))
+
+    if (ANALYZE) {
+      config.plugins.push(new BundleAnalyzerPlugin({
+        analyzerPort: isServer ? 8888 : 8889
+      }))
     }
 
     return config
