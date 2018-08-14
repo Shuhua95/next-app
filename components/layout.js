@@ -20,7 +20,6 @@ injectGlobal`
     height: auto;
     overflow: hidden;
   }
-
   html {
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch;

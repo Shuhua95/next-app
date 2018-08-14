@@ -19,10 +19,10 @@ export default class extends React.Component {
     }
   }
 
-  componentDidMount() {
+  /* componentDidMount() {
     const smoothRolling = new SmoothRolling()
     smoothRolling.init()
-  }
+  } */
 
   handleInputChange = e => {
     const target = e.target

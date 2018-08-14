@@ -11,11 +11,11 @@ app
   .then(() => {
     const server = express()
 
-    server.get('/p/:id', (req, res) => {
+    /* server.get('/p/:id', (req, res) => {
       const actualPage = '/post'
       const queryParams = { id: req.params.id }
       app.render(req, res, actualPage, queryParams)
-    })
+    }) */
 
     // Default catch-all handler to allow Next.js to handle all other routes
     server.all('*', (req, res) => handle(req, res))
