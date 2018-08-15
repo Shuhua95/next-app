@@ -2,6 +2,7 @@ import React from 'react'
 import App, { Container } from 'next/app'
 import Head from 'next/head'
 import styled, { injectGlobal } from 'styled-components'
+import Header from '../components/Header'
 
 injectGlobal`
   /* fix jumping scrollbar */
@@ -17,7 +18,6 @@ injectGlobal`
   }
   body {
     width: 100vw;
-    height: auto;
     overflow: hidden;
   }
 
@@ -31,6 +31,7 @@ injectGlobal`
     box-sizing: inherit;
   }
   body {
+    height: auto;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei",
       Roboto, "Helvetica Neue";
   }
@@ -76,6 +77,7 @@ class Layout extends React.Component {
   render() {
     const { children } = this.props
     return [
+      <Header key="layout-header" />,
       <Main key="layout-main">{children}</Main>,
       <footer key="layout-footer" style={{ textAlign: 'center' }}>&copy;2018 Created by fangniu[AT]live.com base on <a href="https://reactjs.org/" target="_blank">React</a> &amp; <a href="https://nextjs.org/" target="_blank">next.js</a> &amp; <a href="https://ant.design/" target="_blank">antd</a></footer>
     ]

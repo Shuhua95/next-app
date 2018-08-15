@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Router from 'next/router'
 import NProgress from 'nprogress'
-import { Menu } from 'antd'
+import styled from 'styled-components'
 
 NProgress.configure({
   showSpinner: false
@@ -20,6 +20,15 @@ const links = [
   { title: 'About', href: '/about' }
 ]
 
+const Navigation = styled.nav`
+  display: flex;
+  justify-content: center;
+
+  a + a {
+    margin-left: 10px;
+  }
+`
+
 export default class Header extends React.Component {
   constructor(props) {
     super(props)
@@ -30,23 +39,19 @@ export default class Header extends React.Component {
   }
 
   render() {
-    return <>
+    return <header>
       <Head>
         <link rel='stylesheet' type='text/css' href='/static/nprogress.css' />
       </Head>
-      <Menu
-        mode="horizontal"
-        style={{ lineHeight: '64px' }}>
+      <Navigation>
         {
           links.map((item, index) =>
-            <Menu.Item key={item.title}>
-              <Link key={index} href={item.href}>
-                <a>{item.title}</a>
-              </Link>
-            </Menu.Item>
+            <Link key={index} href={item.href}>
+              <a>{item.title}</a>
+            </Link>
           )
         }
-      </Menu>
-    </>
+      </Navigation>
+    </header>
   }
 }
