@@ -1,10 +1,10 @@
 import React from 'react'
 import App, { Container } from 'next/app'
 import Head from 'next/head'
-import styled, { injectGlobal } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import Header from '../components/Header'
 
-injectGlobal`
+createGlobalStyle`
   /* fix jumping scrollbar */
   html {
     overflow-y: scroll;
@@ -79,11 +79,23 @@ class Layout extends React.Component {
     return [
       <Header key="layout-header" />,
       <Main key="layout-main">{children}</Main>,
-      <footer key="layout-footer" style={{ textAlign: 'center' }}>&copy;2018 Created by fangniu[AT]live.com base on <a href="https://reactjs.org/" target="_blank">React</a> &amp; <a href="https://nextjs.org/" target="_blank">next.js</a> &amp; <a href="https://ant.design/" target="_blank">antd</a></footer>
+      <footer key="layout-footer" style={{ textAlign: 'center' }}>
+        &copy;2018 Created by fangniu[AT]live.com base on{' '}
+        <a href="https://reactjs.org/" target="_blank">
+          React
+        </a>{' '}
+        &amp;{' '}
+        <a href="https://nextjs.org/" target="_blank">
+          next.js
+        </a>{' '}
+        &amp;{' '}
+        <a href="https://ant.design/" target="_blank">
+          antd
+        </a>
+      </footer>,
     ]
   }
 }
-
 
 export default class NextApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
@@ -99,16 +111,20 @@ export default class NextApp extends App {
   render() {
     const { Component, pageProps } = this.props
 
-    return <Container>
-      <Head>
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <title>{`${pageProps.title || 'Default Title'} | Next.js`}</title>
-        <link rel='stylesheet' href='/_next/static/style.css' />
-      </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </Container>
+    return (
+      <Container>
+        <Head>
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+          />
+          <title>{`${pageProps.title || 'Default Title'} | Next.js`}</title>
+        </Head>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Container>
+    )
   }
 }

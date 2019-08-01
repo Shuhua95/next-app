@@ -6,8 +6,9 @@ module.exports = {
       "next/babel",
       {
         "preset-env": {
-          "useBuiltIns": "usage"
-        }
+          "useBuiltIns": "usage",
+          "corejs": "2"
+        },
       }
     ]
   ],
@@ -16,7 +17,6 @@ module.exports = {
       "transform-define",
       { "process.env.BACKEND_URL": prod ? "https://niiker.com/api" : "https://niiker.com/api" }
     ],
-    "transform-decorators-legacy",
     [
       "import",
       {
@@ -28,8 +28,7 @@ module.exports = {
       "styled-components",
       {
         "ssr": true,
-        "displayName": true,
-        "preprocess": false
+        "displayName": prod ? true : false,
       }
     ]
   ]

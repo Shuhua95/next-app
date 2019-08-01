@@ -2,8 +2,9 @@ import Head from 'next/head'
 import AppHeader from './Header'
 import { Layout } from 'antd'
 const { Header, Content, Footer } = Layout
-import { injectGlobal } from 'styled-components'
-injectGlobal`
+import { createGlobalStyle } from 'styled-components'
+
+createGlobalStyle`
   /* fix jumping scrollbar */
   html {
     overflow-y: scroll;
@@ -74,18 +75,29 @@ injectGlobal`
 export default ({ children, title = 'Default Title' }) => (
   <Layout>
     <Head>
-      <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover"
+      />
       <title>{`${title} | Next.js`}</title>
-      <link rel='stylesheet' href='/_next/static/style.css' />
     </Head>
     <Header style={{ background: '#fff' }}>
       <AppHeader />
     </Header>
-    <Content>
-      {children}
-    </Content>
+    <Content>{children}</Content>
     <Footer style={{ textAlign: 'center' }}>
-      ban12.com &copy;2018 Created by fangniu[AT]live.com base on <a href="https://reactjs.org/" target="_blank">React</a> &amp; <a href="https://nextjs.org/" target="_blank">next.js</a> &amp; <a href="https://ant.design/" target="_blank">antd</a>
+      ban12.com &copy;2018 Created by fangniu[AT]live.com base on{' '}
+      <a href="https://reactjs.org/" target="_blank">
+        React
+      </a>{' '}
+      &amp;{' '}
+      <a href="https://nextjs.org/" target="_blank">
+        next.js
+      </a>{' '}
+      &amp;{' '}
+      <a href="https://ant.design/" target="_blank">
+        antd
+      </a>
     </Footer>
   </Layout>
 )

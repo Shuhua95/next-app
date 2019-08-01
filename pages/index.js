@@ -13,7 +13,7 @@ const Wrapper = styled.section`
 `
 
 export default class Index extends React.Component {
-  static async getInitialProps() {
+  /* static async getInitialProps() {
     const res = await fetch(`${process.env.BACKEND_URL}/eyepetizer/tabs/selected`)
     const data = await res.json()
 
@@ -21,7 +21,7 @@ export default class Index extends React.Component {
       title: 'Home',
       listData: data
     }
-  }
+  } */
 
   constructor(props) {
     super(props)
@@ -34,7 +34,8 @@ export default class Index extends React.Component {
     const { listData } = this.props
 
     return <Wrapper>
-      <VideoCard listData={listData} />
+      {/* <VideoCard listData={listData} /> */}
+      <h1>hello next.js</h1>
     </Wrapper>
   }
 }
