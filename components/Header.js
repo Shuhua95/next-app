@@ -16,6 +16,7 @@ Router.onRouteChangeError = () => NProgress.done()
 const links = [
   { title: 'Home', href: '/' },
   { title: 'React learning', href: '/react' },
+  { title: 'Hooks', href: '/react-hooks' },
   { title: 'virtualized', href: '/virtualized' },
   { title: 'About', href: '/about' }
 ]

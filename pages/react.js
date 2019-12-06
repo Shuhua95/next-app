@@ -2,7 +2,10 @@ import React from 'react'
 import TodoList from '../components/TodoList'
 import TemperatureInput from '../components/TemperatureInput'
 import FilterableProductTable from '../components/FilterableProductTable'
-import SmoothRolling from '../static/smoothRolling'
+import SmoothRolling from '../public/static/smoothRolling'
+import Clock from '../components/Clock'
+import Toggle from '../components/Toggle'
+import Form from '../components/Form'
 
 export default class extends React.Component {
   constructor(props) {
@@ -53,6 +56,10 @@ export default class extends React.Component {
     const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature
 
     return <>
+      <Form />
+      <Clock />
+      <Toggle />
+
       <TodoList />
 
       <form onSubmit={this.handleSubmit}>

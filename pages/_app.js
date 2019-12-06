@@ -1,10 +1,10 @@
 import React from 'react'
-import App, { Container } from 'next/app'
+import App from 'next/app'
 import Head from 'next/head'
 import styled, { createGlobalStyle } from 'styled-components'
 import Header from '../components/Header'
 
-createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   /* fix jumping scrollbar */
   html {
     overflow-y: scroll;
@@ -76,43 +76,34 @@ const Main = styled.main`
 class Layout extends React.Component {
   render() {
     const { children } = this.props
-    return [
-      <Header key="layout-header" />,
-      <Main key="layout-main">{children}</Main>,
-      <footer key="layout-footer" style={{ textAlign: 'center' }}>
-        &copy;2018 Created by fangniu[AT]live.com base on{' '}
+    return <React.Fragment>
+      <Header />
+      <GlobalStyle />
+      <Main>{children}</Main>
+      <footer style={{ textAlign: 'center' }}>
+        &copy;2018 Created by fangniu[AT]live.com base on
         <a href="https://reactjs.org/" target="_blank">
           React
-        </a>{' '}
-        &amp;{' '}
+        </a>
+        &amp;
         <a href="https://nextjs.org/" target="_blank">
           next.js
-        </a>{' '}
-        &amp;{' '}
+        </a>
+        &amp;
         <a href="https://ant.design/" target="_blank">
           antd
         </a>
-      </footer>,
-    ]
+      </footer>
+    </React.Fragment>
   }
 }
 
 export default class NextApp extends App {
-  static async getInitialProps({ Component, router, ctx }) {
-    let pageProps = {}
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx)
-    }
-
-    return { pageProps }
-  }
-
   render() {
     const { Component, pageProps } = this.props
 
     return (
-      <Container>
+      <React.Fragment>
         <Head>
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta
@@ -124,7 +115,7 @@ export default class NextApp extends App {
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </Container>
+      </React.Fragment>
     )
   }
 }
