@@ -1,4 +1,4 @@
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
 export default class AppDocument extends Document {
@@ -29,13 +29,13 @@ export default class AppDocument extends Document {
 
   render() {
     return (
-      <html dir="ltr" lang="zh-cmn-Hans">
+      <Html dir="ltr" lang="zh-cmn-Hans">
         <Head />
         <body>
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     )
   }
 }

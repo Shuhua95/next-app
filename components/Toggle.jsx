@@ -1,3 +1,5 @@
+import React from 'react'
+
 const LoginButton = props => <button onClick={props.onClick}>Login</button>
 const LogoutButton = props => <button onClick={props.onClick}>Logout</button>
 
